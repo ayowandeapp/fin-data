@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 // using Microsoft.EntityFrameworkCore;
 using DevHabit.Api.Data;
+using DevHabit.Api.Mappers;
 
 namespace DevHabit.Api.Controllers
 {
@@ -21,7 +22,9 @@ namespace DevHabit.Api.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var stock = _context.Stocks.ToList();
+            var stock = _context.Stocks.ToList()
+            // .Select(s => StockMappers.ToStockDto(s))
+            .Select(s=> s.ToStockDto());
             return Ok(stock);
         }
 
@@ -33,7 +36,7 @@ namespace DevHabit.Api.Controllers
             {
                 return NotFound();
             }
-            return Ok(stock);
+            return Ok(stock.ToStockDto());
 
         }
         
