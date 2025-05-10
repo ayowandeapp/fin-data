@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using DevHabit.Api.Data;
 using DevHabit.Api.Mappers;
 using DevHabit.Api.Dtos.Stock;
+using DevHabit.Api.Interfaces;
 
 namespace DevHabit.Api.Controllers
 {
@@ -15,15 +16,17 @@ namespace DevHabit.Api.Controllers
     public class StockController : ControllerBase
     {
         private readonly ApplicationDBContext _context;
-        public StockController(ApplicationDBContext context)
+        private readonly IStockRepository _stockRepository;
+        public StockController(ApplicationDBContext context, IStockRepository stockRepository)
         {
+            _stockRepository = stockRepository;
             _context = context;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var stocks = await _context.Stocks.ToListAsync();
+            var stocks = await _stockRepository.GetAllAsync();
             // .Select(s => StockMappers.ToStockDto(s))
             var stockDto = stocks.Select(s => s.ToStockDto());
             return Ok(stockDto);
