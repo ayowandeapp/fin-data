@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 // using Microsoft.EntityFrameworkCore;
 using DevHabit.Api.Data;
 using DevHabit.Api.Mappers;
+using DevHabit.Api.Dtos.Stock;
 
 namespace DevHabit.Api.Controllers
 {
@@ -37,6 +38,18 @@ namespace DevHabit.Api.Controllers
                 return NotFound();
             }
             return Ok(stock.ToStockDto());
+
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromBody] CreateStockRequestDto stockDto)
+        {
+            var stockModel = stockDto.ToStockFromCreateDTO();
+            _context.Stocks.Add(stockModel);
+            _context.SaveChanges();
+            // call the GetById() and pass the id and return toStockDto
+            return CreatedAtAction(nameof(GetById), new { id = stockModel.Id}, stockModel.ToStockDto());
+
 
         }
         

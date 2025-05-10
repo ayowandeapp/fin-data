@@ -161,3 +161,6 @@ C:\Users\ovayo\Desktop\.net\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Cor
 C:\Users\ovayo\Desktop\.net\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\project\DevHabit\DevHabit.Api\obj\Debug\net9.0\DevHabit.Api.pdb
 C:\Users\ovayo\Desktop\.net\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\project\DevHabit\DevHabit.Api\obj\Debug\net9.0\DevHabit.Api.genruntimeconfig.cache
 C:\Users\ovayo\Desktop\.net\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\project\DevHabit\DevHabit.Api\obj\Debug\net9.0\ref\DevHabit.Api.dll
+C:\Users\ovayo\Desktop\.net\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\project\DevHabit\DevHabit.Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\ovayo\Desktop\.net\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\project\DevHabit\DevHabit.Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\ovayo\Desktop\.net\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\project\DevHabit\DevHabit.Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
