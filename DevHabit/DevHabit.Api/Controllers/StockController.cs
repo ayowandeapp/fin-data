@@ -25,7 +25,7 @@ namespace DevHabit.Api.Controllers
         {
             var stock = _context.Stocks.ToList()
             // .Select(s => StockMappers.ToStockDto(s))
-            .Select(s=> s.ToStockDto());
+            .Select(s => s.ToStockDto());
             return Ok(stock);
         }
 
@@ -33,7 +33,7 @@ namespace DevHabit.Api.Controllers
         public IActionResult GetById(int id)
         {
             var stock = _context.Stocks.Find(id);
-            if(stock == null)
+            if (stock == null)
             {
                 return NotFound();
             }
@@ -48,10 +48,28 @@ namespace DevHabit.Api.Controllers
             _context.Stocks.Add(stockModel);
             _context.SaveChanges();
             // call the GetById() and pass the id and return toStockDto
-            return CreatedAtAction(nameof(GetById), new { id = stockModel.Id}, stockModel.ToStockDto());
-
-
+            return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDto());
         }
-        
+
+
+        [HttpPut]
+        [Route("{id}")]
+        public IActionResult Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateStockDto)
+        {
+            var stockModel = _context.Stocks.FirstOrDefault(x => x.Id == id);
+            if (stockModel == null)
+            {
+                return NotFound();
+            }
+            stockModel.Symbol = updateStockDto.Symbol;
+            stockModel.CompanyName = updateStockDto.CompanyName;
+            stockModel.Purchase = updateStockDto.Purchase;
+            stockModel.LastDiv = updateStockDto.LastDiv;
+            stockModel.Industry = updateStockDto.Industry;
+           
+            _context.SaveChanges();
+            // call the GetById() and pass the id and return toStockDto
+            return Ok(stockModel.ToStockDto());
+        }
     }
 }
