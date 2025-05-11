@@ -8,6 +8,7 @@ using DevHabit.Api.Data;
 using DevHabit.Api.Mappers;
 using DevHabit.Api.Dtos.Stock;
 using DevHabit.Api.Interfaces;
+using DevHabit.Api.Helpers;
 
 namespace DevHabit.Api.Controllers
 {
@@ -24,10 +25,14 @@ namespace DevHabit.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
         {
-            var stocks = await _stockRepository.GetAllAsync();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var stocks = await _stockRepository.GetAllAsync(query);
             // .Select(s => StockMappers.ToStockDto(s))
+            
             var stockDto = stocks.Select(s => s.ToStockDto());
             return Ok(stockDto);
         }
@@ -35,9 +40,9 @@ namespace DevHabit.Api.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var stock = await _stockRepository.GetByIDAsync(id);
             if (stock == null)
@@ -51,9 +56,9 @@ namespace DevHabit.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateStockRequestDto stockDto)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var stockModel = stockDto.ToStockFromCreateDTO();
             await _stockRepository.CreateAsync(stockModel);
@@ -65,7 +70,7 @@ namespace DevHabit.Api.Controllers
         [Route("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateStockDto)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var stockModel = await _stockRepository.UpdateAsync(id, updateStockDto);
             if (stockModel == null)
@@ -73,13 +78,13 @@ namespace DevHabit.Api.Controllers
                 return NotFound("Comment not Found");
             }
             return Ok(stockModel?.ToStockDto());
-        }        
+        }
 
         [HttpDelete]
         [Route("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var stockModel = await _stockRepository.DeleteAsync(id);
             if (stockModel == null)
