@@ -50,5 +50,16 @@ namespace DevHabit.Api.Controllers
             
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateCommentRequestDto updateDto)
+        {
+            var commentModel = await _commentRepository.UpdateAsync(id, updateDto);
+            if (commentModel == null)
+            {
+                return NotFound();
+            }
+            return Ok(commentModel?.ToCommentDto());
+        }
+
     }
 }

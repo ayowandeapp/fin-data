@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DevHabit.Api.Dtos.Comment;
 using DevHabit.Api.Models;
 
 namespace DevHabit.Api.Interfaces
@@ -11,7 +12,7 @@ namespace DevHabit.Api.Interfaces
         Task<List<Comment>> GetAllAsync();
         Task<Comment?> GetByIDAsync(int id);
         Task<Comment?> CreateAsync(Comment commentModel);
-        // Task<Stock?> UpdateAsync(int id, UpdateStockRequestDto updateStockDto);
+        Task<Comment?> UpdateAsync(int id, UpdateCommentRequestDto updateCommentDto);
         //  Task<Comment?> DeleteAsync(int id);
 
     }

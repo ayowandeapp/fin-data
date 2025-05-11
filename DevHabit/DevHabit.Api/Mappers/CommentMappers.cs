@@ -31,5 +31,14 @@ namespace DevHabit.Api.Mappers
             };
         }
         
+        // public static Comment ToCommentFromUpdateCommentDto(this UpdateCommentRequestDto commentDto)
+        // {
+        //     return new Comment 
+        //     {
+        //         Title = commentDto.Title,
+        //         Content = commentDto.Content,
+        //     };
+        // }
+        
     }
 }

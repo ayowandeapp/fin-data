@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DevHabit.Api.Data;
+using DevHabit.Api.Dtos.Comment;
 using DevHabit.Api.Interfaces;
 using DevHabit.Api.Models;
 using Microsoft.EntityFrameworkCore;
@@ -32,5 +33,18 @@ namespace DevHabit.Api.Repository
             return commentModel;
         }
 
+        public async Task<Comment?> UpdateAsync(int id, UpdateCommentRequestDto updateCommentDto)
+        {
+            var comment = await _context.Comments.FirstOrDefaultAsync(x => x.Id == id);
+            if (comment == null)
+            {
+                return null;
+            }
+            comment.Title = updateCommentDto.Title;
+            comment.Content = updateCommentDto.Content;
+           
+            await _context.SaveChangesAsync();
+            return comment;
+        }
     }
 }

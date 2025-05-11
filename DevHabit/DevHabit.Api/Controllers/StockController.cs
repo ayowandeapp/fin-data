@@ -58,7 +58,10 @@ namespace DevHabit.Api.Controllers
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateStockDto)
         {
             var stockModel = await _stockRepository.UpdateAsync(id, updateStockDto);
-            // call the GetById() and pass the id and return toStockDto
+            if (stockModel == null)
+            {
+                return NotFound("Comment not Found");
+            }
             return Ok(stockModel?.ToStockDto());
         }
 
