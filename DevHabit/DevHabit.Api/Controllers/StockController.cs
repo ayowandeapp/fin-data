@@ -63,9 +63,7 @@ namespace DevHabit.Api.Controllers
                 return NotFound("Comment not Found");
             }
             return Ok(stockModel?.ToStockDto());
-        }
-
-        
+        }        
 
         [HttpDelete]
         [Route("{id}")]

@@ -13,7 +13,7 @@ namespace DevHabit.Api.Interfaces
         Task<Comment?> GetByIDAsync(int id);
         Task<Comment?> CreateAsync(Comment commentModel);
         Task<Comment?> UpdateAsync(int id, UpdateCommentRequestDto updateCommentDto);
-        //  Task<Comment?> DeleteAsync(int id);
+        Task<Comment?> DeleteAsync(int id);
 
     }
 }
