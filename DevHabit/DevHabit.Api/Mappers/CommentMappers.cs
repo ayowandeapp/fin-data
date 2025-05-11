@@ -20,6 +20,16 @@ namespace DevHabit.Api.Mappers
             };
 
         }
+
+        public static Comment ToCommentFromCommentDto(this CreateCommentRequestDto commentDto, int stockId)
+        {
+            return new Comment 
+            {
+                Title = commentDto.Title,
+                Content = commentDto.Content,
+                StockId = stockId
+            };
+        }
         
     }
 }

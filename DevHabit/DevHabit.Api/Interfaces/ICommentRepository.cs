@@ -10,7 +10,7 @@ namespace DevHabit.Api.Interfaces
     {
         Task<List<Comment>> GetAllAsync();
         Task<Comment?> GetByIDAsync(int id);
-        // Task<Stock?> CreateAsync(Stock stockModel);
+        Task<Comment?> CreateAsync(Comment commentModel);
         // Task<Stock?> UpdateAsync(int id, UpdateStockRequestDto updateStockDto);
         //  Task<Comment?> DeleteAsync(int id);
 

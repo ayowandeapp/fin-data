@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DevHabit.Api.Dtos.Comment;
 using DevHabit.Api.Interfaces;
 using DevHabit.Api.Mappers;
 using DevHabit.Api.Repository;
@@ -11,9 +12,10 @@ namespace DevHabit.Api.Controllers
 {
     [ApiController]
     [Route("api/comment")]
-    public class CommentController(ICommentRepository commentRepository) : ControllerBase
+    public class CommentController(ICommentRepository commentRepository, IStockRepository stockRepository) : ControllerBase
     {
         public readonly ICommentRepository _commentRepository = commentRepository;
+        private readonly IStockRepository _stockRepository = stockRepository; 
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -32,6 +34,20 @@ namespace DevHabit.Api.Controllers
                 return NotFound();
             }
             return Ok(comment.ToCommentDto());
+        }
+
+        [HttpPost]
+        [Route("{stockId}")]
+        public async Task<IActionResult> Create([FromRoute] int stockId, CreateCommentRequestDto createCommentDto)
+        {
+            if(!await _stockRepository.StockExists(stockId))
+            {
+                return BadRequest("stock does not exist");
+            }
+            var commentModel = createCommentDto.ToCommentFromCommentDto(stockId);
+            await _commentRepository.CreateAsync(commentModel);
+            return CreatedAtAction(nameof(GetById), new { id = commentModel.Id }, commentModel.ToCommentDto());
+            
         }
 
     }
