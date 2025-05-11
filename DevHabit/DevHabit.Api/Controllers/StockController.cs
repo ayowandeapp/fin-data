@@ -32,9 +32,13 @@ namespace DevHabit.Api.Controllers
             return Ok(stockDto);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
             var stock = await _stockRepository.GetByIDAsync(id);
             if (stock == null)
             {
@@ -47,6 +51,10 @@ namespace DevHabit.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateStockRequestDto stockDto)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
             var stockModel = stockDto.ToStockFromCreateDTO();
             await _stockRepository.CreateAsync(stockModel);
             // call the GetById() and pass the id and return toStockDto
@@ -54,9 +62,11 @@ namespace DevHabit.Api.Controllers
         }
 
         [HttpPut]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateStockDto)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
             var stockModel = await _stockRepository.UpdateAsync(id, updateStockDto);
             if (stockModel == null)
             {
@@ -66,10 +76,11 @@ namespace DevHabit.Api.Controllers
         }        
 
         [HttpDelete]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
             var stockModel = await _stockRepository.DeleteAsync(id);
             if (stockModel == null)
             {

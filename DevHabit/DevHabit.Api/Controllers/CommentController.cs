@@ -25,7 +25,7 @@ namespace DevHabit.Api.Controllers
             return Ok(commentDto);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
             var comment = await _commentRepository.GetByIDAsync(id);
@@ -37,9 +37,11 @@ namespace DevHabit.Api.Controllers
         }
 
         [HttpPost]
-        [Route("{stockId}")]
+        [Route("{stockId:int}")]
         public async Task<IActionResult> Create([FromRoute] int stockId, CreateCommentRequestDto createCommentDto)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
             if (!await _stockRepository.StockExists(stockId))
             {
                 return BadRequest("stock does not exist");
@@ -50,9 +52,11 @@ namespace DevHabit.Api.Controllers
 
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateCommentRequestDto updateDto)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
             var commentModel = await _commentRepository.UpdateAsync(id, updateDto);
             if (commentModel == null)
             {
@@ -62,9 +66,11 @@ namespace DevHabit.Api.Controllers
         }
 
         [HttpDelete]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
             var commentModel = await _commentRepository.DeleteAsync(id);
             if (commentModel == null)
             {
