@@ -164,3 +164,7 @@ C:\Users\ovayo\Desktop\.net\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Cor
 C:\Users\ovayo\Desktop\.net\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\project\DevHabit\DevHabit.Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\ovayo\Desktop\.net\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\project\DevHabit\DevHabit.Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\ovayo\Desktop\.net\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\project\DevHabit\DevHabit.Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\ovayo\Desktop\.net\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\project\DevHabit\DevHabit.Api\bin\Debug\net9.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\ovayo\Desktop\.net\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\project\DevHabit\DevHabit.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\ovayo\Desktop\.net\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\project\DevHabit\DevHabit.Api\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Users\ovayo\Desktop\.net\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\project\DevHabit\DevHabit.Api\bin\Debug\net9.0\Newtonsoft.Json.Bson.dll
