@@ -11,7 +11,7 @@ namespace DevHabit.Api.Interfaces
     public interface IAuthService
     {
         Task<AuthResult> RegisterAsync(UserRegistrationRequestDto requestDto);
-        Task<AuthResult> LoginAsync(string email, string Password); 
+        Task<AuthResult> LoginAsync(UserLoginRequestDto requestDto); 
         AuthResult CreateToken(AppUser user);       
     }
 }

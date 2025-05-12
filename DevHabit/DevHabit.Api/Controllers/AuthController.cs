@@ -26,8 +26,31 @@ namespace DevHabit.Api.Controllers
                 if (!result.Success)
                     return BadRequest(new { Errors = result.Errors });
 
-            //123String*string
+                //123String*string
                 // return Ok(new { Token = result.Token, UserId = result.UserId });
+                return Ok(result);
+
+            }
+            catch (System.Exception e)
+            {
+
+                return StatusCode(500, e);
+            }
+        }
+
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] UserLoginRequestDto requestDto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var result = await _authService.LoginAsync(requestDto);
+                if (!result.Success)
+                    return Unauthorized(new { Errors = result.Errors });
+                
                 return Ok(result);
 
             }

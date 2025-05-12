@@ -14,10 +14,11 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace DevHabit.Api.Service
 {
-    public class AuthService(UserManager<AppUser> userManager, IConfiguration config) : IAuthService
+    public class AuthService(UserManager<AppUser> userManager, IConfiguration config, SignInManager<AppUser> signInManager) : IAuthService
     {
         private readonly UserManager<AppUser> _userManager = userManager;
         private readonly IConfiguration _config = config;
+        private readonly SignInManager<AppUser> _signInManager = signInManager;
 
         public AuthResult CreateToken(AppUser user)
         {
@@ -53,16 +54,25 @@ namespace DevHabit.Api.Service
             };
         }
 
-        public Task<AuthResult> LoginAsync(string email, string Password)
+        public async Task<AuthResult> LoginAsync(UserLoginRequestDto requestDto)
         {
-            throw new NotImplementedException();
+            var user = await _userManager.FindByEmailAsync(requestDto.Email.ToLower());
+            if (user == null)
+                return new AuthResult { Errors = ["Invalid login"] };
+
+            var result = await _signInManager.CheckPasswordSignInAsync(user, requestDto.Password, false);
+            if (!result.Succeeded)
+                return new AuthResult { Errors = ["Invalid login"] };
+
+            return CreateToken(user);
         }
 
         public async Task<AuthResult> RegisterAsync(UserRegistrationRequestDto requestDto)
         {
             var existingUser = await _userManager.FindByEmailAsync(requestDto.Email);
             if (existingUser != null)
-                return new AuthResult { Errors = new[] { "Email already in use" } };
+                return new AuthResult { Success = false, Errors = ["Email already in use"] };
+
             var appUser = new AppUser
             {
                 UserName = requestDto.Username,

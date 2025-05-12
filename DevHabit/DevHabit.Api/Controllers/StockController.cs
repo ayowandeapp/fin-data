@@ -9,6 +9,7 @@ using DevHabit.Api.Mappers;
 using DevHabit.Api.Dtos.Stock;
 using DevHabit.Api.Interfaces;
 using DevHabit.Api.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DevHabit.Api.Controllers
 {
@@ -25,6 +26,7 @@ namespace DevHabit.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
         {
             if (!ModelState.IsValid)

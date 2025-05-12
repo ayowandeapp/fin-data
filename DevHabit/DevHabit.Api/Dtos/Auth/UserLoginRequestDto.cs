@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace DevHabit.Api.Dtos.Auth
 {
-    public class UserRegistrationRequestDto
+    public class UserLoginRequestDto
     {
-        [Required]
-        public string? Username { get; set; }
-
         [Required]
         [EmailAddress]
         public string Email { get; set; }
