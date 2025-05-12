@@ -3,6 +3,7 @@ using DevHabit.Api.Data;
 using DevHabit.Api.Interfaces;
 using DevHabit.Api.Models;
 using DevHabit.Api.Repository;
+using DevHabit.Api.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,8 @@ builder.Services.AddDbContext<ApplicationDBContext>(options => {
 
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 //Add Identity
 builder.Services.AddIdentity<AppUser, IdentityRole>(options=>{
