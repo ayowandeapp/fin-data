@@ -26,8 +26,9 @@ namespace DevHabit.Api.Controllers
                 if (!result.Success)
                     return BadRequest(new { Errors = result.Errors });
 
+            //123String*string
                 // return Ok(new { Token = result.Token, UserId = result.UserId });
-                return Ok("user created");
+                return Ok(result);
 
             }
             catch (System.Exception e)
