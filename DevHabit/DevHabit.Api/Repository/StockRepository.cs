@@ -31,7 +31,6 @@ namespace DevHabit.Api.Repository
                 {
                     stocks = query.IsDesc ? stocks.OrderByDescending(s=> s.Symbol) : stocks.OrderBy(s=> s.Symbol);
                 }
-
             }
 
             //Apply pagination
