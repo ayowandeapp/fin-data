@@ -16,5 +16,8 @@ namespace DevHabit.Api.Models
         public int? StockId { get; set; }
         public Stock? Stock { get; set; } //navigation property
         
+        public string? AppUserId { get; set; }
+        public AppUser? AppUser { get; set; } //navigation property
+        
     }
 }
