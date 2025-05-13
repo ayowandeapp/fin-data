@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ovayo\\Desktop\\.net\\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\\project\\DevHabit\\DevHabit.Api\\DevHabit.Api.csproj": {}
+    "C:\\Users\\ovayo\\Desktop\\.net\\project\\FinData\\fin-data\\DevHabit\\DevHabit.Api\\DevHabit.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ovayo\\Desktop\\.net\\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\\project\\DevHabit\\DevHabit.Api\\DevHabit.Api.csproj": {
+    "C:\\Users\\ovayo\\Desktop\\.net\\project\\FinData\\fin-data\\DevHabit\\DevHabit.Api\\DevHabit.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ovayo\\Desktop\\.net\\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\\project\\DevHabit\\DevHabit.Api\\DevHabit.Api.csproj",
+        "projectUniqueName": "C:\\Users\\ovayo\\Desktop\\.net\\project\\FinData\\fin-data\\DevHabit\\DevHabit.Api\\DevHabit.Api.csproj",
         "projectName": "DevHabit.Api",
-        "projectPath": "C:\\Users\\ovayo\\Desktop\\.net\\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\\project\\DevHabit\\DevHabit.Api\\DevHabit.Api.csproj",
+        "projectPath": "C:\\Users\\ovayo\\Desktop\\.net\\project\\FinData\\fin-data\\DevHabit\\DevHabit.Api\\DevHabit.Api.csproj",
         "packagesPath": "C:\\Users\\ovayo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ovayo\\Desktop\\.net\\Milan Jovanovic - Pragmatic REST APIs in ASP.NET Core 2025-3\\project\\DevHabit\\DevHabit.Api\\obj\\",
+        "outputPath": "C:\\Users\\ovayo\\Desktop\\.net\\project\\FinData\\fin-data\\DevHabit\\DevHabit.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ovayo\\AppData\\Roaming\\NuGet\\NuGet.Config"
