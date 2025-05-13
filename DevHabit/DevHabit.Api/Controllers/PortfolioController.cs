@@ -60,6 +60,25 @@ namespace DevHabit.Api.Controllers
             return Created();
             
         }
+
+        [HttpDelete]
+        [Authorize]
+        public async Task<IActionResult> Delete(string symbol)
+        {
+            var username = User.GetUsername();
+            var appUser = await _usermanager.FindByNameAsync(username);
+
+            var userPortfolio = await _portfolioRepo.GetUserPortfolio(appUser);
+            var filteredStock = userPortfolio.Where(s => s.Symbol.ToLower() == symbol.ToLower());
+            if(filteredStock.Count() == 0 )
+            {
+                return BadRequest("stock doesnot exist");
+            }
+
+            await _portfolioRepo.DeletePortfolio(appUser, symbol);
+            return Ok();
+
+        }
         
     }
 }

@@ -29,11 +29,9 @@ namespace DevHabit.Api.Controllers
                 //123String*string
                 // return Ok(new { Token = result.Token, UserId = result.UserId });
                 return Ok(result);
-
             }
             catch (System.Exception e)
             {
-
                 return StatusCode(500, e);
             }
         }
