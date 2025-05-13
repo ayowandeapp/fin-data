@@ -53,8 +53,8 @@ builder.Services.AddDbContext<ApplicationDBContext>(options => {
 
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
-
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IPortfolioRepository, PortfolioRepository>();
 
 //Add Identity
 builder.Services.AddIdentity<AppUser, IdentityRole>(options=>{

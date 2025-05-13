@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using DevHabit.Api.Data;
+using DevHabit.Api.Interfaces;
+using DevHabit.Api.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace DevHabit.Api.Repository
+{
+    public class PortfolioRepository(ApplicationDBContext context) : IPortfolioRepository
+    {
+        private readonly ApplicationDBContext _context = context;
+        public async Task<List<Stock>> GetUserPortfolio(AppUser user)
+        {
+            return await _context.Portfolios.Where(u => u.AppUserId == user.Id)
+                .Select(s => new Stock
+                {
+                    Id = s.StockId,
+                    Symbol = s.Stock.Symbol,
+                    CompanyName = s.Stock.CompanyName,
+                    Purchase = s.Stock.Purchase,
+                    LastDiv = s.Stock.LastDiv,
+                    Industry = s.Stock.Industry,
+                    MarketCap = s.Stock.MarketCap
+                }).ToListAsync();
+        }
+    }
+}
